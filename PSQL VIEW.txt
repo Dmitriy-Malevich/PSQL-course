@@ -1,0 +1,49 @@
+CREATE OR REPLACE VIEW heavy_orders AS
+SELECT *
+FROM orders
+WHERE freight > 100;
+
+CREATE OR REPLACE VIEW test AS
+SELECT order_date, required_date, shipped_date, 
+ship_postal_code, company_name, contact_name, phone, last_name, first_name, title
+FROM orders
+JOIN customers USING(customer_id)
+JOIN employees USING(employee_id)
+
+SELECT *
+FROM orders_customers_employees
+WHERE order_date > '1997-01-01'
+
+CREATE OR REPLACE VIEW orders_customers_employees AS
+SELECT order_date, required_date, shipped_date, 
+ship_postal_code, ship_country, company_name, contact_name, phone, last_name, first_name, title
+FROM orders
+INNER JOIN customers USING(customer_id)
+INNER JOIN employees USING(employee_id)
+
+SELECT *
+FROM orders_customers_employees
+
+SELECT *
+FROM products
+
+CREATE OR REPLACE VIEW active_products AS
+SELECT *
+FROM products
+WHERE discontinued <> 1
+WITH LOCAL CHECK OPTION
+
+SELECT *
+FROM products_view
+
+SELECT *
+FROM products
+
+INSERT INTO active_products
+VALUES (78, 'Aniseed Syrup', 1, 2, '12 - 550 ml bottles', 10, 13, 70, 25, 0)
+
+ALTER TABLE products
+DELETE FROM products 
+WHERE product_id = 78
+
+DROP VIEW IF EXISTS products_view

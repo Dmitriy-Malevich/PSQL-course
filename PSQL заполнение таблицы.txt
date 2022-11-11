@@ -1,0 +1,11 @@
+INSERT INTO book 
+VALUES 
+(1, 'The Diary of a Yong Girl', '0199533351'),
+(2, 'Pride adn Prejudice', '2334554533351'),
+(3, 'The Diary fwfw', '04487645456');
+
+INSERT INTO publisher
+VALUES
+(1,'Everyman''s Library', 'NY'),
+(2,'Oxford University Press', 'NY'),
+(3,'Grand Gentral Publisher', 'Washington')

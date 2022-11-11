@@ -1,0 +1,17 @@
+SELECT *
+FROM products
+
+SELECT order_id, order_date,
+	CASE WHEN date_part('month', order_date) BETWEEN 3 AND 5 THEN 'spring'
+		 WHEN date_part('month', order_date) BETWEEN 6 AND 8 THEN 'summer'
+	     WHEN date_part('month', order_date) BETWEEN 9 AND 11 THEN 'autumn'
+		 ELSE 'winter'
+	END AS season
+FROM orders
+
+SELECT product_name, unit_price,
+	CASE WHEN unit_price > 30 THEN 'expensive'
+		 ELSE 'not expensive'
+	END AS price
+FROM products
+ORDER BY unit_price DESC
